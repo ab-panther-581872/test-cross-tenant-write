@@ -1,0 +1,10 @@
+name: Test Security Audit: Canary Workolow
+
+on: workflow_dispatch
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Canary
+        run: echo "security-audit-canary-workflow-run"
