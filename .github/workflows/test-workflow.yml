@@ -1,10 +1,8 @@
-name: Test Canary Workflow
-
+name: Compromised Canary Workflow
 on: workflow_dispatch
-
 jobs:
   canary:
     runs-on: ubuntu-latest
     steps:
-      - name: Canary
-        run: echo "security-audit-canary-workflow-run-001"
+      - name: CSRF-CANARY-VIA-FORK
+        run: echo "CROSS-TENANT-WRITE-VIA-FORK-PR"
